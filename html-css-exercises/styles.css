@@ -3,17 +3,19 @@
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-select, input, textarea {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+select,
+input,
+textarea {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
 }
 
 /* Navbar Styling */
@@ -26,6 +28,12 @@ select, input, textarea {
     - Add a bottom margin of 35px
     - Add a padding of 25px to thicken navbar
     */
+    background-color: #f9a857;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    padding: 35px;
 }
 
 .title a {
@@ -35,6 +43,10 @@ select, input, textarea {
     - Get rid of the link underline with text-decoration
     - Bold the text
     */
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .navButtons a {
@@ -46,6 +58,14 @@ select, input, textarea {
     - Set font size to 25px
     - Get rid of the link underline with text-decoration
     */
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    margin-left: 5px;
+    text-wrap: nowrap;
 }
 
 /* Homepage Styling */
@@ -55,7 +75,7 @@ h2 {
 
 /* Trips Section Styling */
 .tripsContainer {
-/*
+    /*
   - Allow for a flexible box layout where child elements (trip boxes) will be aligned
   - Center the trip boxes horizontally within the container
   - Center the trip boxes vertically within the container
@@ -63,11 +83,16 @@ h2 {
   - Set the container width to 80% of its parent
   - Add a 20px space between each trip box
 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto; /* NOTE - horizontally centers element within parent */
+    width: 80%;
+    gap: 20px;
 }
 
-  
 .tripBox {
-/* 
+    /* 
   - Make each trip box take an equal portion of the container space
   - Add a 20px padding inside each trip box for spacing content
   - Give the trip box a light orange background
@@ -75,6 +100,13 @@ h2 {
   - Round the corners of each trip box by 8px
   - Add a shadow around each trip box
 */
+    flex: 1;
+    padding: 5px;
+    background-color: #f7cda3;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
 }
 
 /* Upload Page Section */
@@ -86,7 +118,8 @@ h2 {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+        rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 
 .tripForm {
@@ -99,7 +132,8 @@ h2 {
     margin-bottom: 5px;
 }
 
-.tripForm input, .tripForm textarea {
+.tripForm input,
+.tripForm textarea {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
