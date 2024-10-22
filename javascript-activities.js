@@ -108,40 +108,42 @@ const destinations = [
 
 /*
 We’re planning an international trip, and we want to check the exchange 
-rates between different currencies. Write an asynchronous function 
+rates between different currencies. We've made a function 
 `getExchangeRate` that takes two currencies (e.g., USD and EUR) and simulates 
 retrieving the exchange rate after a delay using `setTimeout`.
-
-Use async/await for handling the asynchronous operation, but also use 
-`.try()` and `.catch()` to handle the response or errors. 
 */
 
 function getExchangeRate(fromCurrency, toCurrency) {
-    // Simulated exchange rate data
-    const exchangeRates = {
-        'USD': { 'EUR': 0.84, 'JPY': 110.49 },
-        'EUR': { 'USD': 1.19, 'JPY': 130.02 },
-    };
+  // Simulated exchange rate data
+  const exchangeRates = {
+      'USD': { 'EUR': 0.84, 'JPY': 110.49 },
+      'EUR': { 'USD': 1.19, 'JPY': 130.02 },
+  };
 
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          console.log(`Fetching ${fromCurrency} to ${toCurrency}`)
-            // Check if the exchange rate exists for the given currencies
-            if (exchangeRates[fromCurrency] && exchangeRates[fromCurrency][toCurrency]) {
-                resolve(`1 ${fromCurrency} = ${exchangeRates[fromCurrency][toCurrency]} ${toCurrency}`);
-            } else {
-                reject(`Exchange rate not found for ${fromCurrency} to ${toCurrency}`);
-            }
-        }, 1500);  // Simulating a delay of 1.5 seconds
-    });
+  return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log(`Fetching ${fromCurrency} to ${toCurrency}`)
+          // Check if the exchange rate exists for the given currencies
+          if (exchangeRates[fromCurrency] && exchangeRates[fromCurrency][toCurrency]) {
+              resolve(`1 ${fromCurrency} = ${exchangeRates[fromCurrency][toCurrency]} ${toCurrency}`);
+          } else {
+              reject(`Exchange rate not found for ${fromCurrency} to ${toCurrency}`);
+          }
+      }, 1500);  // Simulating a delay of 1.5 seconds
+  });
 }
 
 /*
 TODO:
 Write an async function `fetchExchangeRate` that uses `await` 
 to retrieve the exchange rate from the `getExchangeRate` function, 
-and handles success and errors using try/catch.
-*/
+and handles success and errors using .then/catch.
+*/ 
+async function fetchExchangeRate(fromCurrency, toCurrency){
+  await getExchangeRate(fromCurrency, toCurrency)
+    .then(message => console.log(message))
+    .catch(error => console.log(error));
+}
 
 // YOUR CODE HERE
 
