@@ -148,6 +148,6 @@ async function fetchExchangeRate(fromCurrency, toCurrency){
 // YOUR CODE HERE
 
 // Example calls:
-fetchExchangeRate('USD', 'EUR')
-fetchExchangeRate('USD', 'GBP')  // This should trigger an error
+// fetchExchangeRate('USD', 'EUR')
+// fetchExchangeRate('USD', 'GBP')  // This should trigger an error
 
