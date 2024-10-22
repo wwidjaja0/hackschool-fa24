@@ -107,40 +107,45 @@ const destinations = [
 
 
 /*
-For our trip, we want to display the current weather for our 
-selected destination. Since fetching this data is an asynchronous operation, 
-we'll use a Promise to simulate retrieving the weather information. Fill 
-in the below Promise code to achieve this. Then, add a then/catch statement
-to either log the weather data, or an error message.
+We’re planning an international trip, and we want to check the exchange 
+rates between different currencies. Write an asynchronous function 
+`getExchangeRate` that takes two currencies (e.g., USD and EUR) and simulates 
+retrieving the exchange rate after a delay using `setTimeout`.
+
+Use async/await for handling the asynchronous operation, but also use 
+`.try()` and `.catch()` to handle the response or errors. 
 */
 
-async function displayWeather(destination) {
-    // Here's the data we've retrieved.
-    const weatherData = {
-      Hawaii: 'Sunny',
-      Bali: 'Humid',
-      Alaska: 'Snowy',
+function getExchangeRate(fromCurrency, toCurrency) {
+    // Simulated exchange rate data
+    const exchangeRates = {
+        'USD': { 'EUR': 0.84, 'JPY': 110.49 },
+        'EUR': { 'USD': 1.19, 'JPY': 130.02 },
     };
-  
-    try {
-      // Simulate an asynchronous operation using a Promise and await
-      const message = await new Promise((resolve, reject) => {
+
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
-          /*
-            TODO HERE:See if the weather for our destination exists, 
-            and make a resolve statement to return the corresponding
-            weatherData, and a reject statement to return an error
-            message
-          */
-        }, 1000);
-      });
-      console.log("message", message);
-    } catch (error) {
-      console.error('Error:', error);
-    }
+          console.log(`Fetching ${fromCurrency} to ${toCurrency}`)
+            // Check if the exchange rate exists for the given currencies
+            if (exchangeRates[fromCurrency] && exchangeRates[fromCurrency][toCurrency]) {
+                resolve(`1 ${fromCurrency} = ${exchangeRates[fromCurrency][toCurrency]} ${toCurrency}`);
+            } else {
+                reject(`Exchange rate not found for ${fromCurrency} to ${toCurrency}`);
+            }
+        }, 1500);  // Simulating a delay of 1.5 seconds
+    });
 }
-  
-// Call the function with a destination
-displayWeather('Bali');
-displayWeather('Alaska');
-displayWeather('Paris'); // This should trigger the error log.
+
+/*
+TODO:
+Write an async function `fetchExchangeRate` that uses `await` 
+to retrieve the exchange rate from the `getExchangeRate` function, 
+and handles success and errors using try/catch.
+*/
+
+// YOUR CODE HERE
+
+// Example calls:
+fetchExchangeRate('USD', 'EUR')
+fetchExchangeRate('USD', 'GBP')  // This should trigger an error
+
