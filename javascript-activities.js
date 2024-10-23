@@ -5,7 +5,6 @@ function templates that we'll fill out together as we
 go through the workshop and learn these concepts.
 */
 
-
 /*
 For this function logTrip, we're passing in a trip name
 (i.e. "Thanksgiving in Japan"), the number of days for this 
@@ -14,15 +13,20 @@ Use console.log to output the trip's name and its total cost.
 HINT: Use * to multiply two numbers, and feel free to use multiple
 console.log statements. Test your function when you're done!
 */
-function logTrip(tripName, tripLen, costPerDay){
-
+function logTrip(tripName, tripLen, costPerDay) {
+    console.log(
+        "Trip Name: " +
+            tripName +
+            "\nTotal Cost: " +
+            tripLen * costPerDay +
+            "\n"
+    );
 }
 
 /* Uncomment the line below to call the function. */
-// logTrip("Thanksgiving in Japan", 1, 500);
-
-
+logTrip("Thanksgiving in Japan", 1, 500);
 /*
+
 Below, we've created an object to represent our Japan trip.
 However, things have changed — we want to stay in Japan for 3
 days now, and the cost has been bumped up to $650. Edit tripObject
@@ -37,9 +41,11 @@ let tripObject = {
 };
 
 /* EDIT TRIPOBJECT HERE: */
-
-
-
+tripObject.tripLen = 3;
+tripObject["costPerDay"] = 650;
+tripObject.numTravelers = 4;
+console.log("Modified tripObject: ");
+console.log(tripObject);
 ///////////////////////////
 
 /*
@@ -55,22 +61,31 @@ const tripObject1 = {
     name: "Christmas in Korea",
     tripLen: 4,
     costPerDay: 237,
-    numTravellers: 3,
-}
+    numTravelers: 3,
+};
 
 const tripObject2 = {
     name: "Christmas in Taiwan",
     tripLen: 5,
     costPerDay: 367,
-    numTravellers: 6,
-}
+    numTravelers: 6,
+};
 /* MAKE YOUR FUNCTION HERE */
-
-
+function cheaperTrip(tripObj1, tripObj2) {
+    if (
+        (tripObj1.tripLen * tripObj1.costPerDay) / tripObj1.numTravelers >
+        (tripObj2.tripLen * tripObj2.costPerDay) / tripObj2.numTravelers
+    ) {
+        return tripObj2;
+    } else {
+        return tripObj1;
+    }
+}
 ///////////////////////////
 
 /* Uncomment the below line to test out your function */
-// console.log(cheaperTrip(tripObject1, tripObject2));
+console.log("\nCheaper trip: ");
+console.log(cheaperTrip(tripObject1, tripObject2));
 
 /*
 Below, we've created an array of travel destinations. These
@@ -92,19 +107,27 @@ const destinations = [
     "Barcelona",
     "Munich",
     "New York",
-]
+];
 
 /* MAKE YOUR FUNCTION HERE */
-
-
+let isTripIncluded = (tripArray, tripDest) => {
+    for (i of tripArray) {
+        if (i === tripDest) {
+            return true;
+        }
+    }
+    return false;
+};
 ///////////////////////////
 
 /* 
     Uncomment the below line to test out your function.
     Feel free to test whatever target destination you'd like.
 */
-// console.log(isTripIncluded(destinations, ""));
-
+console.log('\nIs "" included?');
+console.log(isTripIncluded(destinations, ""));
+console.log("Is Manila included?");
+console.log(isTripIncluded(destinations, "Manila"));
 
 /*
 We’re planning an international trip, and we want to check the exchange 
@@ -114,23 +137,30 @@ retrieving the exchange rate after a delay using `setTimeout`.
 */
 
 function getExchangeRate(fromCurrency, toCurrency) {
-  // Simulated exchange rate data
-  const exchangeRates = {
-      'USD': { 'EUR': 0.84, 'JPY': 110.49 },
-      'EUR': { 'USD': 1.19, 'JPY': 130.02 },
-  };
+    // Simulated exchange rate data
+    const exchangeRates = {
+        USD: { EUR: 0.84, JPY: 110.49 },
+        EUR: { USD: 1.19, JPY: 130.02 },
+    };
 
-  return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log(`Fetching ${fromCurrency} to ${toCurrency}`)
-          // Check if the exchange rate exists for the given currencies
-          if (exchangeRates[fromCurrency] && exchangeRates[fromCurrency][toCurrency]) {
-              resolve(`1 ${fromCurrency} = ${exchangeRates[fromCurrency][toCurrency]} ${toCurrency}`);
-          } else {
-              reject(`Exchange rate not found for ${fromCurrency} to ${toCurrency}`);
-          }
-      }, 1500);  // Simulating a delay of 1.5 seconds
-  });
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`Fetching ${fromCurrency} to ${toCurrency}`);
+            // Check if the exchange rate exists for the given currencies
+            if (
+                exchangeRates[fromCurrency] &&
+                exchangeRates[fromCurrency][toCurrency]
+            ) {
+                resolve(
+                    `1 ${fromCurrency} = ${exchangeRates[fromCurrency][toCurrency]} ${toCurrency}`
+                );
+            } else {
+                reject(
+                    `Exchange rate not found for ${fromCurrency} to ${toCurrency}`
+                );
+            }
+        }, 1500); // Simulating a delay of 1.5 seconds
+    });
 }
 
 /*
@@ -138,11 +168,16 @@ TODO:
 Write an async function `fetchExchangeRate` that uses `await` 
 to retrieve the exchange rate from the `getExchangeRate` function, 
 and handles success and errors using .then/catch.
-*/ 
+*/
 
 // YOUR CODE HERE
+async function fetchExchangeRate(fromCurr, toCurr) {
+    await getExchangeRate(fromCurr, toCurr)
+        .then((resp) => console.log(resp))
+        .catch((err) => console.error(err));
+    // storing the promise and doing a .then().catch() would work as well
+}
 
 // Example calls:
-// fetchExchangeRate('USD', 'EUR')
-// fetchExchangeRate('USD', 'GBP')  // This should trigger an error
-
+fetchExchangeRate("USD", "EUR");
+fetchExchangeRate("USD", "GBP"); // This should trigger an error
