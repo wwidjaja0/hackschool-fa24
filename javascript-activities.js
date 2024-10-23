@@ -139,11 +139,6 @@ Write an async function `fetchExchangeRate` that uses `await`
 to retrieve the exchange rate from the `getExchangeRate` function, 
 and handles success and errors using .then/catch.
 */ 
-async function fetchExchangeRate(fromCurrency, toCurrency){
-  await getExchangeRate(fromCurrency, toCurrency)
-    .then(message => console.log(message))
-    .catch(error => console.log(error));
-}
 
 // YOUR CODE HERE
 
