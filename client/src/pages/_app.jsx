@@ -1,11 +1,12 @@
 // Import Navbar from the components folder
 import "@/styles/globals.css";
+import Navbar from "@/components/Navbar";
 
 export default function App({ Component, pageProps }) {
-  return (
-    <div>
-      {/* Add your navbar component here */}
-      <Component {...pageProps} />
-    </div>
-  );
+    return (
+        <div>
+            <Navbar />
+            <Component {...pageProps} />
+        </div>
+    );
 }

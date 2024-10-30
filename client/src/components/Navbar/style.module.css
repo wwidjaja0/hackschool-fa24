@@ -9,6 +9,12 @@
     - Add a bottom margin of 35px
     - Add a padding of 25px to thicken navbar
     */
+    background-color: #f9a857;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    padding: 25px;
 }
 
 .title {
@@ -17,6 +23,10 @@
     - Hint: Use align-items or justify-content 
     - Add 10px gap
     */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .title a {
@@ -26,12 +36,18 @@
     - Get rid of the link underline with text-decoration
     - Bold the text
     */
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .navButtons {
     /*
     - Add spacing between tabs
     */
+    display: flex;
+    gap: 10px;
 }
 
 .navButtons a {
@@ -43,6 +59,16 @@
     - Set font size to 20px
     - Get rid of the link underline with text-decoration
     */
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
 }
 
-
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
