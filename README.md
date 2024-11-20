@@ -10,9 +10,9 @@ If you want to get a head start on hack school content, we have our Hack Textboo
 
 As the series goes on, we'll add the slides, recordings, and code here!
 
-Part 1 (10/15) - Intro to HTML/CSS
+Part 1 (10/15) - Intro to HTML/CSS - [Slide Deck](https://acmurl.com/hackschoolfa24-1) - [Code](https://github.com/acmucsd/hackschool-fa24/tree/part1) - [Recording](https://acmurl.com/hackschoolfa24-1-video)
 
-Part 2 (10/22) - JavaScript & Node.js
+Part 2 (10/22) - JavaScript & Node.js - [Slide Deck](https://acmurl.com/hackschoolfa24-2) - [Code](https://github.com/acmucsd/hackschool-fa24/tree/part2) - [Recording](https://acmurl.com/hackschoolfa24-2-video)
 
 Part 3 (10/29) - React & Next.js
 
