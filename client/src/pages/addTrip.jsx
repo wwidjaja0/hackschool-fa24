@@ -1,6 +1,7 @@
 import styles from "../styles/TripForm.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import TravelAPI from "../../api";
 
 const AddTrip = () => {
 	/*  Activity 1: Add the useState hooks for 

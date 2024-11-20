@@ -14,6 +14,7 @@ const Home = () => {
 
 	const fetchTrips = async () => {
 		const response = await TravelAPI.getTrip();
+		console.log("Fetched trips from:", response.config.url);
 		setTrips(response.data);
 	};
 
@@ -33,14 +34,15 @@ const Home = () => {
 				<div className={styles.tripBox}>
 					<h3>Trips</h3>
 					{trips.length > 0 ? (
-						trips.map((trip) => {
+						trips.map((trip) => (
 							<TripCard
+								key={trip._id}
 								destination={trip.destination}
 								journalEntry={trip.journalEntry}
 								startDate={trip.startDate}
 								endDate={trip.endDate}
-							/>;
-						})
+							/>
+						))
 					) : (
 						<p> No trips available. </p>
 					)}
@@ -48,14 +50,15 @@ const Home = () => {
 				<div className={styles.tripBox}>
 					<h3>Activities</h3>
 					{activities.length > 0 ? (
-						activities.map((activity) => {
+						activities.map((activity) => (
 							<ActivityCard
+								key={activity._id}
 								trip={activity.trip}
 								activitySpot={activity.activitySpot}
 								rating={activity.rating}
 								review={activity.review}
-							/>;
-						})
+							/>
+						))
 					) : (
 						<p> No activities available. </p>
 					)}

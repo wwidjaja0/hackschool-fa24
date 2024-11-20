@@ -14,7 +14,12 @@ const TripCard = ({ destination, startDate, endDate, journalEntry }) => {
 	// Remember to use the props using {} inside the <p> tags
 	return (
 		<div className={styles.card}>
-			<Image src="/travel_placeholder.jpg" width={550} height={300} />
+			<Image
+				src="/travel_placeholder.jpg"
+				width={550}
+				height={300}
+				alt="image"
+			/>
 			<p className={styles.cardContent}>
 				<strong>Destination: </strong> {destination}
 			</p>

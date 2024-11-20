@@ -14,21 +14,32 @@ const AddActivity = () => {
 	const [trips, setTrips] = useState([]);
 	const [selectedTrip, setSelectedTrip] = useState("");
 	const [activity, setActivity] = useState("");
-	const [rating, setRating] = useState("");
+	const [rating, setRating] = useState("1");
 	const [review, setReview] = useState("");
 	const router = useRouter();
 
+	const formatDate = (date) => {
+		if (!date) return "";
+
+		const options = { year: "numeric", month: "long", day: "numeric" };
+		return new Date(date).toLocaleDateString(undefined, options);
+	};
+
 	const fetchTrips = async () => {
 		const response = await TravelAPI.getTrip();
-		setTrips(response.data);
+		const tripsData = response.data;
+		setTrips(tripsData);
+		if (tripsData.length > 0) {
+			setSelectedTrip(tripsData[0]._id);
+		}
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		await TravelAPI.postTrip({
+		await TravelAPI.postActivity({
 			trip: selectedTrip,
-			activity: activity,
+			activitySpot: activity,
 			rating: rating,
 			review: review,
 		});
@@ -55,12 +66,12 @@ const AddActivity = () => {
 						setSelectedTrip(event.target.value);
 					}}
 				>
-					{trips.map((trip) => {
+					{trips.map((trip) => (
 						<option key={trip._id} value={trip._id}>
-							{trip.destination} (formatDate({trip.startDate}) - formatDate (
-							{trip.endDate}))
-						</option>;
-					})}
+							{trip.destination} {formatDate(trip.startDate)} -{" "}
+							{formatDate(trip.endDate)}
+						</option>
+					))}
 				</select>
 				<label htmlFor="activity">Activity:</label>
 				<input
