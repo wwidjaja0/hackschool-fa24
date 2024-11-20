@@ -22,7 +22,7 @@ const AddTrip = () => {
 		const formattedEndDate = new Date(endDate);
 
 		await TravelAPI.postTrip({
-			destination: destination,
+			destination,
 			startDate: formattedStartDate,
 			endDate: formattedEndDate,
 			journalEntry: entry,
